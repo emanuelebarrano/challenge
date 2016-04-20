@@ -1,0 +1,7 @@
+it/bologna/emanuele/configuration/HelloWorldConfiguration.class
+it/bologna/emanuele/domain/User.class
+it/bologna/emanuele/controller/ReadTweetController.class
+it/bologna/emanuele/dao/TwitDAOImpl.class
+it/bologna/emanuele/domain/Follower.class
+it/bologna/emanuele/dao/TwitDAO.class
+it/bologna/emanuele/domain/Twit.class
