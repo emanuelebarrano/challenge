@@ -2,10 +2,16 @@ package it.bologna.emanuele.domain;
 
 public class User {
 
-	private String id;
-
-	public String getId() {
-		return id;
-	}	
+	private int id;
 	
+	private String name;
+
+	public int getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
 }

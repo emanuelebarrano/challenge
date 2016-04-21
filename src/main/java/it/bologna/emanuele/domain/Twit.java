@@ -3,10 +3,11 @@ package it.bologna.emanuele.domain;
 public class Twit {
 
 	int id;
-	String userID;
+	int userID;
 	String text;
 
-	public Twit(String userId, String text) {
+	public Twit(int id, int userId, String text) {
+		this.id =id;
 		this.userID = userId;
 		this.text = text;
 	}
@@ -15,7 +16,7 @@ public class Twit {
 		return id;
 	}
 
-	public String getUserId() {
+	public int getUserId() {
 		return userID;
 	}
 

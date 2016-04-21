@@ -1,69 +1,22 @@
 package it.bologna.emanuele.dao;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import javax.sql.DataSource;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
 import it.bologna.emanuele.domain.Twit;
- 
+import it.bologna.emanuele.mapper.TwitRowMapper;
 
-@Repository
-public class TwitDAOImpl implements TwitDAO {
-	
-	private JdbcTemplate jdbcTemplate;
+public class TwitDAOImpl extends GenericDAO implements TwitDAO {
 
-    @Autowired
-    public void setDataSource(DataSource dataSource) {
-    	System.out.println("mmmmmiaoooooooooooooooo "+dataSource);
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
-        System.out.println("sgallaaaoooooo "+this.jdbcTemplate);
-        String query = "select id, userId, text from Twit";
-        List<Map<String,Object>> empRows = jdbcTemplate.queryForList(query);
-        System.out.println("asdlfkhjaldskfjasdlkjf "+empRows.size());
-    }
- 
-    public List<Twit> getAll() {
-    	String query = "select id, userId, text from Twit";
-        List<Twit> empList = new ArrayList<Twit>();
- 
-        System.out.println("ciaoooooooooooooooo "+jdbcTemplate);
-        
-        List<Map<String,Object>> empRows = jdbcTemplate.queryForList(query);
-         
-        for(Map<String,Object> empRow : empRows){
-//        	Twit emp = new Twit();
-//            emp.setId(Integer.parseInt(String.valueOf(empRow.get("id"))));
-//            emp.setName(String.valueOf(empRow.get("name")));
-//            emp.setRole(String.valueOf(empRow.get("role")));
-//            empList.add(emp);
-        }
-        return empList;
-    }
+	public List<Twit> getAllById(int userId) {
+		String sql = "select id, userId, text from Twit where userid = :userId";
 
-	public void save(Twit employee) {
-		// TODO Auto-generated method stub
-		
+		SqlParameterSource namedParameters = new MapSqlParameterSource("userId", userId);
+
+		return this.namedParameterJdbcTemplate.query(sql, namedParameters, new TwitRowMapper());
+
 	}
 
-	public Twit getById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void update(Twit employee) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void deleteById(int id) {
-		// TODO Auto-generated method stub
-		
-	}
- 
 }
