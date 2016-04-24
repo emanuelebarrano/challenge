@@ -23,9 +23,17 @@ public class TwitDAOTest {
 	TwitDAO twitDAO;
 
 	@Test
-	public void test() {
+	public void getAllByIdTest() {
 
 		List<Twit> twitList = twitDAO.getAllById(1);
+		assertEquals(3, twitList.size());
+
+	}
+
+	@Test
+	public void getAllByIdAndTextTest() {
+
+		List<Twit> twitList = twitDAO.getAllByIdAndText(1, "bello");
 		assertEquals(2, twitList.size());
 
 	}

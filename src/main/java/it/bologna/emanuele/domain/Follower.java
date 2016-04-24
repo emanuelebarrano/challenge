@@ -5,7 +5,5 @@ public class Follower {
 	int id;
 	int idUser;
 	int idFollower;
-	
-	
-		
+
 }
