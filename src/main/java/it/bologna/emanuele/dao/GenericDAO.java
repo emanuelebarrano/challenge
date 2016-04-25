@@ -10,8 +10,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class GenericDAO {
 
-	protected static NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-	protected static JdbcTemplate jdbcTemplate;
+	protected NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+	protected JdbcTemplate jdbcTemplate;
 
 	@Autowired
 	public void setDataSource(DataSource dataSource) {

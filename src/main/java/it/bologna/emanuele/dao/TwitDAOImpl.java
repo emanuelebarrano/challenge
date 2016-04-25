@@ -6,10 +6,12 @@ import java.util.Map;
 
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.stereotype.Repository;
 
 import it.bologna.emanuele.domain.Twit;
 import it.bologna.emanuele.mapper.TwitRowMapper;
 
+@Repository
 public class TwitDAOImpl extends GenericDAO implements TwitDAO {
 
 	public List<Twit> getAllById(int userId) {

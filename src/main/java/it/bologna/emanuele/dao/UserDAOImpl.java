@@ -6,10 +6,12 @@ import java.util.Map;
 
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.stereotype.Repository;
 
 import it.bologna.emanuele.domain.User;
 import it.bologna.emanuele.mapper.UserRowMapper;
 
+@Repository
 public class UserDAOImpl extends GenericDAO implements UserDAO {
 
 	final String GET_FOLLOWINGS_QUERY = "select * from user u where u.id in (select f.followingId from user u, follower f where u.id=f.userId and u.id = :userId)";
