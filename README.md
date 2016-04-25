@@ -62,5 +62,7 @@ Method: GET
 
 Description: list of people a user is following
 
+## Test
 
+Postman collection: [src/test/resources/postman/challenge.json.postman_collection]
 
