@@ -14,5 +14,7 @@
 	<import resource="classpath:security-context.xml" />
 
 	<context:component-scan base-package="it.bologna.emanuele.controller" />
+	<context:component-scan base-package="it.bologna.emanuele.service" />
+	<context:component-scan base-package="it.bologna.emanuele.validator" />
 
 </beans>

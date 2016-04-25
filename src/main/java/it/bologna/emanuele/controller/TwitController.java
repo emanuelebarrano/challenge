@@ -2,35 +2,44 @@ package it.bologna.emanuele.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.bologna.emanuele.dao.TwitDAOImpl;
 import it.bologna.emanuele.domain.Twit;
+import it.bologna.emanuele.presentation.JsonModel;
+import it.bologna.emanuele.service.TwitService;
 
 @RestController
 public class TwitController {
 
+	@Autowired
+	TwitService twitService;
+
 	@RequestMapping(value = "/read/{userId}", produces = "application/json")
-	public List<Twit> getAllById(@PathVariable int userId) {
+	public JsonModel getAllById(@PathVariable int userId) {
 
-		TwitDAOImpl twitDao = new TwitDAOImpl();
+		JsonModel response = new JsonModel("OK");
 
-		List<Twit> result = twitDao.getAllById(userId);
+		List<Twit> result = twitService.getAllById(userId);
 
-		return result;
+		response.setResponse(result);
+
+		return response;
 	}
 
 	@RequestMapping(value = "/read/{userId}", params = { "search" }, produces = "application/json")
-	public List<Twit> getAllByIdAndText(@PathVariable int userId, @RequestParam(value = "search") String text) {
+	public JsonModel getAllByIdAndText(@PathVariable int userId, @RequestParam(value = "search") String text) {
 
-		TwitDAOImpl twitDao = new TwitDAOImpl();
+		JsonModel response = new JsonModel("OK");
 
-		List<Twit> result = twitDao.getAllByIdAndText(userId, text);
+		List<Twit> result = twitService.getAllByIdAndText(userId, text);
 
-		return result;
+		response.setResponse(result);
+
+		return response;
 	}
 
 }

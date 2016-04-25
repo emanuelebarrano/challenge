@@ -28,7 +28,7 @@ public class TwitControllerIT {
 		assertOk(response);
 	}
 
-	@HttpTest(method = Method.GET, path = "/read/1/search=ciao", authentications = {
+	@HttpTest(method = Method.GET, path = "/read/1?search=ciao", authentications = {
 			@Authentication(type = BASIC, user = "challenge", password = "challenge") })
 	public void testSearchAuthenticationWithCorrectCredentials() {
 		assertOk(response);

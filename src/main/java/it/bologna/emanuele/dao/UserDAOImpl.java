@@ -12,9 +12,9 @@ import it.bologna.emanuele.mapper.UserRowMapper;
 
 public class UserDAOImpl extends GenericDAO implements UserDAO {
 
-	final String GET_FOLLOWERS_QUERY = "select * from user u where u.id in (select f.followingId from user u, follower f where u.id=f.userId and u.id = :userId)";
+	final String GET_FOLLOWINGS_QUERY = "select * from user u where u.id in (select f.followingId from user u, follower f where u.id=f.userId and u.id = :userId)";
 
-	final String GET_FOLLOWINGS_QUERY = "select * from user u where u.id in (select f.userId from user u, follower f where u.id = f.followingId and u.id=:userId)";
+	final String GET_FOLLOWERS_QUERY = "select * from user u where u.id in (select f.userId from user u, follower f where u.id = f.followingId and u.id=:userId)";
 
 	public List<User> getFollowers(int userId) {
 

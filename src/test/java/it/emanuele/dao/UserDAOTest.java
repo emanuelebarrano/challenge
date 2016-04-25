@@ -25,7 +25,7 @@ public class UserDAOTest {
 	@Test
 	public void getFollowersTest() {
 
-		List<User> twitList = userDAO.getFollowers(1);
+		List<User> twitList = userDAO.getFollowers(2);
 		assertEquals(1, twitList.size());
 
 	}
@@ -33,7 +33,7 @@ public class UserDAOTest {
 	@Test
 	public void getFollowingTest() {
 
-		List<User> twitList = userDAO.getFollowing(2);
+		List<User> twitList = userDAO.getFollowing(1);
 		assertEquals(1, twitList.size());
 
 	}

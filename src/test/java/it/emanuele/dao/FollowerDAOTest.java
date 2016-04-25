@@ -2,7 +2,6 @@ package it.emanuele.dao;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,16 +31,6 @@ public class FollowerDAOTest {
 	public void unfollowTest() {
 
 		int result = followerDAO.unfollow(1, 2);
-		assertEquals(1, result);
-
-	}
-
-	@Test
-	@Ignore
-	public void unfollow2Test() {
-
-		int result = followerDAO.unfollow(1, 1);
-		followerDAO.unfollow(1, 2);
 		assertEquals(1, result);
 
 	}
