@@ -11,30 +11,30 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import it.bologna.emanuele.dao.UserDAO;
-import it.bologna.emanuele.domain.User;
+import it.bologna.emanuele.dao.TwitDAO;
+import it.bologna.emanuele.domain.Twit;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:dataSource-context.xml" })
 @Transactional
-public class UserDAOTest {
+public class TwitDAOTest {
 
 	@Autowired
-	UserDAO userDAO;
+	TwitDAO twitDAO;
 
 	@Test
-	public void getFollowersTest() {
+	public void getAllByIdTest() {
 
-		List<User> twitList = userDAO.getFollowers(1);
-		assertEquals(1, twitList.size());
+		List<Twit> twitList = twitDAO.getAllById(1);
+		assertEquals(3, twitList.size());
 
 	}
 
 	@Test
-	public void getFollowingTest() {
+	public void getAllByIdAndTextTest() {
 
-		List<User> twitList = userDAO.getFollowing(2);
-		assertEquals(1, twitList.size());
+		List<Twit> twitList = twitDAO.getAllByIdAndText(1, "bello");
+		assertEquals(2, twitList.size());
 
 	}
 

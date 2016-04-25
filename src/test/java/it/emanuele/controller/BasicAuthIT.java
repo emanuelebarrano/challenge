@@ -1,6 +1,7 @@
 package it.emanuele.controller;
 
 import static com.eclipsesource.restfuse.Assert.assertOk;
+import static com.eclipsesource.restfuse.Assert.assertUnauthorized;
 import static com.eclipsesource.restfuse.AuthenticationType.BASIC;
 
 import org.junit.Rule;
@@ -15,7 +16,7 @@ import com.eclipsesource.restfuse.annotation.Context;
 import com.eclipsesource.restfuse.annotation.HttpTest;
 
 @RunWith(HttpJUnitRunner.class)
-public class TwitControllerIT {
+public class BasicAuthIT {
 
 	@Rule
 	public Destination destination = new Destination(this, "http://localhost:8080");
@@ -23,14 +24,14 @@ public class TwitControllerIT {
 	private Response response;
 
 	@HttpTest(method = Method.GET, path = "/read/1", authentications = {
-			@Authentication(type = BASIC, user = "challenge", password = "challenge") })
-	public void testReadAuthenticationWithCorrectCredentials() {
-		assertOk(response);
+			@Authentication(type = BASIC, user = "bad", password = "request") })
+	public void testReadAuthenticationWithInvalidCredentials() {
+		assertUnauthorized(response);
 	}
 
-	@HttpTest(method = Method.GET, path = "/read/1/search=ciao", authentications = {
+	@HttpTest(method = Method.GET, path = "/read/1", authentications = {
 			@Authentication(type = BASIC, user = "challenge", password = "challenge") })
-	public void testSearchAuthenticationWithCorrectCredentials() {
+	public void testReadAuthenticationWithCorrectCredentials() {
 		assertOk(response);
 	}
 

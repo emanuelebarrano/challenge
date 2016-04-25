@@ -12,6 +12,10 @@
 	<bean id="followerDAO" class="it.bologna.emanuele.dao.FollowerDAOImpl">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+	<bean id="userDAO" class="it.bologna.emanuele.dao.UserDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 
 	<bean id="dataSourceLocal" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">

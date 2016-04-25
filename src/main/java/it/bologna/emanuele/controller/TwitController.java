@@ -4,13 +4,14 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.bologna.emanuele.dao.TwitDAOImpl;
 import it.bologna.emanuele.domain.Twit;
 
 @RestController
-public class TweetController {
+public class TwitController {
 
 	@RequestMapping(value = "/read/{userId}", produces = "application/json")
 	public List<Twit> getAllById(@PathVariable int userId) {
@@ -22,8 +23,8 @@ public class TweetController {
 		return result;
 	}
 
-	@RequestMapping(value = "/read/{userId}/search={text}", produces = "application/json")
-	public List<Twit> getAllByIdAndText(@PathVariable int userId, @PathVariable String text) {
+	@RequestMapping(value = "/read/{userId}", params = { "search" }, produces = "application/json")
+	public List<Twit> getAllByIdAndText(@PathVariable int userId, @RequestParam(value = "search") String text) {
 
 		TwitDAOImpl twitDao = new TwitDAOImpl();
 

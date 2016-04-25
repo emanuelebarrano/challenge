@@ -15,22 +15,22 @@ import com.eclipsesource.restfuse.annotation.Context;
 import com.eclipsesource.restfuse.annotation.HttpTest;
 
 @RunWith(HttpJUnitRunner.class)
-public class TwitControllerIT {
+public class UserControllerIT {
 
 	@Rule
 	public Destination destination = new Destination(this, "http://localhost:8080");
 	@Context
 	private Response response;
 
-	@HttpTest(method = Method.GET, path = "/read/1", authentications = {
+	@HttpTest(method = Method.GET, path = "/readfollowers/1", authentications = {
 			@Authentication(type = BASIC, user = "challenge", password = "challenge") })
-	public void testReadAuthenticationWithCorrectCredentials() {
+	public void testAuthenticationWithInvalidCredentials() {
 		assertOk(response);
 	}
 
-	@HttpTest(method = Method.GET, path = "/read/1/search=ciao", authentications = {
+	@HttpTest(method = Method.GET, path = "/readfollowing/1", authentications = {
 			@Authentication(type = BASIC, user = "challenge", password = "challenge") })
-	public void testSearchAuthenticationWithCorrectCredentials() {
+	public void testAuthenticationWithCorrectCredentials() {
 		assertOk(response);
 	}
 
