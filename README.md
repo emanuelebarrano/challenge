@@ -64,5 +64,5 @@ Description: list of people a user is following
 
 ## Test
 
-Postman collection: [src/test/resources/postman/challenge.json.postman_collection]
+Postman collection: [link](src/test/resources/postman/challenge.json.postman_collection)
 
