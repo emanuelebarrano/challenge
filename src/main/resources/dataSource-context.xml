@@ -13,10 +13,18 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+	<bean id="dataSourceLocal" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/challenge" />
+		<property name="username" value="challenge" />
+		<property name="password" value="challenge" />
+	</bean>
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://challenge.col6yj6fomaw.eu-west-1.rds.amazonaws.com:3306/challenge" />
 		<property name="username" value="challenge" />
 		<property name="password" value="challenge" />
 	</bean>

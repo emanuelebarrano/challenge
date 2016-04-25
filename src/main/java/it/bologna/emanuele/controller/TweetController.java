@@ -12,7 +12,7 @@ import it.bologna.emanuele.domain.Twit;
 @RestController
 public class TweetController {
 
-	@RequestMapping("/read/{userId}")
+	@RequestMapping(value = "/read/{userId}", produces = "application/json")
 	public List<Twit> getAllById(@PathVariable int userId) {
 
 		TwitDAOImpl twitDao = new TwitDAOImpl();
@@ -22,7 +22,7 @@ public class TweetController {
 		return result;
 	}
 
-	@RequestMapping("/read/{userId}/search={text}")
+	@RequestMapping(value = "/read/{userId}/search={text}", produces = "application/json")
 	public List<Twit> getAllByIdAndText(@PathVariable int userId, @PathVariable String text) {
 
 		TwitDAOImpl twitDao = new TwitDAOImpl();

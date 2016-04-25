@@ -14,7 +14,7 @@ public class TwitDAOImpl extends GenericDAO implements TwitDAO {
 
 	public List<Twit> getAllById(int userId) {
 
-		String sql = "select t.id, t.userid, t.text from twit t, follower f where (t.userid = f.followingid or t.userid = :userId)";
+		String sql = "select distinct t.id, t.userid, t.text from twit t, follower f where (t.userid = f.followingid or t.userid = :userId)";
 
 		SqlParameterSource namedParameters = new MapSqlParameterSource("userId", userId);
 
@@ -24,7 +24,7 @@ public class TwitDAOImpl extends GenericDAO implements TwitDAO {
 
 	public List<Twit> getAllByIdAndText(int userId, String text) {
 
-		String sql = "select t.id, t.userid, t.text from twit t, follower f where (t.userid = f.followingid or t.userid = :userId) and text like :text";
+		String sql = "select distinct t.id, t.userid, t.text from twit t, follower f where (t.userid = f.followingid or t.userid = :userId) and text like :text";
 
 		Map<String, Object> parameters = new HashMap<String, Object>();
 

@@ -1,41 +1,32 @@
 package it.bologna.emanuele.controller;
 
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.bologna.emanuele.dao.FollowerDAOImpl;
+import it.bologna.emanuele.domain.Follower;
 
 @RestController
 public class FollowerController {
 
-	// @RequestMapping("/following/{userId}")
-	// public List<User> getFollowing(int userId) {
-	//
-	// return null;
-	//
-	// }
-	//
-	// @RequestMapping("/followers/{userId}")
-	// public List<User> getFollowers(int userId) {
-	//
-	// return null;
-	//
-	// }
-
-	@RequestMapping("/follow/{userId}/{followerId}")
-	public void follow(@PathVariable int userId, @PathVariable int followerId) {
+	@RequestMapping(value = "/follow", method = RequestMethod.PUT, consumes = "application/json")
+	@ResponseBody
+	public void follow(@RequestBody Follower follower) {
 
 		FollowerDAOImpl followerDAOImpl = new FollowerDAOImpl();
-		followerDAOImpl.follow(userId, followerId);
+		followerDAOImpl.follow(follower.getIdUser(), follower.getIdFollower());
 
 	}
 
-	@RequestMapping("/unfollow/{userId}/{followerId}")
-	public void unfollow(@PathVariable int userId, @PathVariable int followerId) {
+	@RequestMapping(value = "/unfollow", method = RequestMethod.POST, consumes = "application/json")
+	@ResponseBody
+	public void unfollow(@RequestBody Follower follower) {
 
 		FollowerDAOImpl followerDAOImpl = new FollowerDAOImpl();
-		followerDAOImpl.unfollow(userId, followerId);
+		followerDAOImpl.unfollow(follower.getIdUser(), follower.getIdFollower());
 
 	}
 
